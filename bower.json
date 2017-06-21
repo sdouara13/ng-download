@@ -1,0 +1,9 @@
+{
+  "name": "ng-download",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./ng-download.js",
+  "ignore": [],
+  "dependencies": {
+  }
+}

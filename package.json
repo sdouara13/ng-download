@@ -1,0 +1,20 @@
+{
+  "name": "ng-download",
+  "version": "1.0.0",
+  "description": "Angular's download module",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdouara13/ng-download.git"
+  },
+  "keywords": [
+    "angular",
+    "download"
+  ],
+  "author": "Li",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdouara13/ng-download/issues"
+  },
+  "homepage": "https://github.com/sdouara13/ng-download#readme"
+}

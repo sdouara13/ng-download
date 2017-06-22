@@ -8,7 +8,7 @@ http://danml.com/download.html
 Import ng-download and angular.
 ```
 import angular from 'angular';
-import ngDownload from 'ng-mosaic';
+import ngDownload from 'ng-download';
 ```
 
 Ensure that your application module specifies ngDownload as a dependency:

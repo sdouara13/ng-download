@@ -1,6 +1,6 @@
 {
   "name": "ng-download",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Angular's download module",
   "main": "index.js",
   "repository": {

@@ -17,7 +17,7 @@
    * @name ngDownload.download
    * @requires $document
    */
-    .factory('$download', [function() {
+    .factory('$downloadService', [function() {
 
       return {
         /**
@@ -170,6 +170,57 @@
         }
       };
 
+    }])
+
+    .provider('$download', function () {
+      var defaultOptions = {
+        fileName: 'export-file.zip',
+        data: '',
+        mimeType: 'application/zip'
+      };
+
+      var globalOptions = {};
+
+      this.options = function(value) {
+        angular.extend(globalOptions, value);
+      };
+
+      this.$get = ['$downloadService', function ( $downloadService ) {
+        return function $download(options) {
+          return {
+            socpe: {
+              downloadConfig: '='
+            },
+            compile: function() {
+              return function link(scope, element) {
+                var data;
+                var fileName;
+                var mimeType;
+                scope.$watch('downloadConfig', function ( newVal ) {
+                  setConfig();
+                });
+
+                $(element[0]).on('click', function () {
+                  $downloadService.download(data, fileName, mimeType);
+                });
+
+                function setConfig(  ) {
+                  var config = angular.extend({}, defaultOptions, globalOptions, scope.downloadConfig);
+                  data = config.data;
+                  fileName = config.fileName;
+                  mimeType = config.mimeType;
+                }
+
+                setConfig();
+              }
+            }
+          }
+        }
+      }]
+    })
+
+    .directive('download', [ '$download', function($download) {
+      return $download();
     }]);
 
 

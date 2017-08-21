@@ -14,10 +14,21 @@ import ngDownload from 'ng-download';
 Ensure that your application module specifies ngDownload as a dependency:
 ```
 angular.module(MODULE_NAME, ['ngDownload'])
-	.controller(CONTROLLER_NAME, ['$download', function($download) {
-		$download.download(data, fileName, mineType);
+	.controller(CONTROLLER_NAME, ['$downloadService', function($downloadService) {
+		$downloadService.download(data, fileName, mineType);
 	}]);
 
+```
+Or use 'download' directive:
+```
+<script>
+	$scope.downloadConfig = {
+      fileName: 'example',
+      data: '',
+      mimeType: 'application/zip'
+    }
+</script>
+<button download download-config="downloadConfig">Download</button>
 ```
 
 # method: download Params

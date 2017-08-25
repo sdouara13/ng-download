@@ -188,29 +188,28 @@
       this.$get = ['$downloadService', function ( $downloadService ) {
         return function $download(options) {
           return {
-            socpe: {
+            scope: {
               downloadConfig: '='
             },
             compile: function() {
-              return function link(scope, element) {
+              return function link($scope, element) {
                 var data;
                 var fileName;
                 var mimeType;
-                scope.$watch('downloadConfig', function ( newVal ) {
+                $scope.$watch('downloadConfig', function ( newVal, oldVal ) {
                   setConfig();
-                });
+                }, true);
 
                 $(element[0]).on('click', function () {
                   $downloadService.download(data, fileName, mimeType);
                 });
 
                 function setConfig(  ) {
-                  var config = angular.extend({}, defaultOptions, globalOptions, scope.downloadConfig);
+                  var config = angular.extend({}, defaultOptions, globalOptions, $scope.downloadConfig);
                   data = config.data;
                   fileName = config.fileName;
                   mimeType = config.mimeType;
                 }
-
                 setConfig();
               }
             }
